@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{/css/employee-form-style.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<form th:action="@{/update-employee}" th:object="${employee}" method="POST">
+    <div class="ownForm" align="center">
+        <h2 class="titleLabel">Edit Employee Form</h2>
+        <div>
+            <input readonly type="number" class="item" th:field="*{id}" id="id" placeholder="ID">
+        </div>
+
+        <div>
+            <input type="text" class="item" th:field="*{firstName}" id="firstName" placeholder="First Name">
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" style="color:red"></span>
+        </div>
+
+        <div>
+            <input type="text" class="item" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" style="color:red"></span>
+        </div>
+
+        <div>
+            <select th:field="*{jobTitle}" class="item" id="jobTitle">
+                <option th:each="job : ${jobs}"
+                        th:value="${job}"
+                        th:text="${job.displayValue}"></option>
+            </select>
+            <span th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}" style="color:red"></span>
+        </div>
+
+        <br/>
+
+        <button type="submit" class="btn btn-primary btn-sm" id="addButton">Edit Employee</button>
+    </div>
+</form>
+</body>
+</html>

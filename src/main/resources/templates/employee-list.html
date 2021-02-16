@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/employee-list-style.css}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<form th:action="@{/employee-form}" method="GET">
+   <div th:switch="${employees}">
+       <h2 th:case="null">No Employees Found!</h2>
+       <div th:case="*" align="center">
+           <h2 class="label">List of All Employees</h2>
+           <button type="submit" class="btn btn-primary btn-sm"
+                   data-toggle="button" aria-pressed="false"
+                   autocomplete="off" id="btnsubmit">Add Employee</button>
+           <table class="content-table">
+               <thead>
+               <tr>
+                   <th>ID</th>
+                   <th>First Name</th>
+                   <th>Last Name</th>
+                   <th>Job Title</th>
+                   <th>Edit/Delete</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr th:each="employee : ${employees}">
+                   <td th:text="${employee.id}"></td>
+                   <td th:text="${employee.firstName}"></td>
+                   <td th:text="${employee.lastName}"></td>
+                   <td th:text="${employee.jobTitle.displayValue}"></td>
+                   <td>
+                       <a th:href="@{edit-employee/{id}(id=${employee.id})}">Edit</a>
+                       <a th:href="@{delete-employee/{id}(id=${employee.id})}">Delete</a>
+                   </td>
+               </tr>
+               </tbody>
+           </table>
+       </div>
+   </div>
+</form>
+</body>
+</html>
