@@ -11,7 +11,7 @@ This is a CRUD app that perform following operation:
 <br/>
 **Script for MySQL data base:**
 ```
-CREATE SCHEMA `myschema` ;
+CREATE SCHEMA `employee` ;
 ```
 ```
 CREATE TABLE `employee`.`employees` (
