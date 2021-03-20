@@ -19,17 +19,17 @@ CREATE TABLE `employee`.`employees` (
   PRIMARY KEY (`id`));
   ```
   ## Some screenshots from project: 
-  </br>
   ### Display all Employees
   </br>
   <img src="/screenshots/all_employees.JPG">
-  
   </br>
+  
   ### Add new Employee
   </br>
   <img src="/screenshots/new_employee.JPG">
-  
   </br>
+  
   ### Requirements when adding / editing an employee
   </br>
   <img src="/screenshots/requirements.JPG">
+  </br>
